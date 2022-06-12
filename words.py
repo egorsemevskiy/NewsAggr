@@ -20,11 +20,11 @@ def main():
 
     doc = Doc(text)
 
-    #matches = addr_extractor(text)
-
-
     doc.segment(segmenter)
-    print(doc.tokens[:5])
+    
+    for token in doc.tokens:
+        token.lemmatize(morph_vocab)
+
 
 main()
 
