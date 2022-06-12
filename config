@@ -3,6 +3,8 @@ Path =sqlite:///./news.db
 
 [RSS]
 link1 = http://tass.ru/rss/v2.xml
+link2 = https://rss.nytimes.com/services/xml/rss/nyt/World.xml
+
 
 [Export_params]
 delay_between_messages = 5

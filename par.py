@@ -1,8 +1,8 @@
-import sqlite3
 import feedparser
 import configparser
 import logging
 
+import sqlite3
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -10,35 +10,6 @@ from sqlalchemy import Table, Column, Integer, String, ForeignKey, update, and_
 
 
 Base = declarative_base()
-
-class Source(object):
-
-    def __init__(self, config_links):
-        self.links = [config_links[i] for i in config_links]
-        self.news = []
-        self.refresh()
-
-    def refresh(self):
-        self.news = []
-        for i in self.links:
-            data = feedparser.parse(i)
-            self.news += [News(i.title, i.link, i.published) \
-                    for i in data['entries']]
-
-class Database:
-
-    def __init__(self, obj):
-        engine = create_engine(obj, echo=False)
-        Session = sessionmaker(bind=engine)
-        self.session = Session()
-
-    def add_news(self, news):
-        self.session.add(news)
-        self.session.commit()
-    
-    def find_link(self,link):
-        if self.session.query(News).filter_by(link = link).first(): return True
-        else: return False 
 
 class News(Base):
     """
@@ -67,6 +38,40 @@ class News(Base):
 
     def __hash__(self):
         return hash(self._keys())
+
+class Database:
+
+    def __init__(self, obj):
+        engine = create_engine(obj, echo=False)
+        Session = sessionmaker(bind=engine)
+        self.session = Session()
+
+    def add_news(self, news):
+        self.session.add(news)
+        self.session.commit()
+    
+    def find_link(self,link):
+        if self.session.query(News).filter_by(link = link).first(): return True
+        else: return False 
+
+class Source(object):
+
+    def __init__(self, config_links):
+        self.links = [config_links[i] for i in config_links]
+        self.news = []
+        self.refresh()
+
+    def refresh(self):
+        self.news = []
+        for i in self.links:
+            data = feedparser.parse(i)
+            self.news += [News(i.title, i.link, i.published) \
+                    for i in data['entries']]
+
+
+
+
+
 
 class Bot:
     """
