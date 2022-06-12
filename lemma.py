@@ -30,16 +30,14 @@ doc.tag_morph(morph_tagger)
 
 doc.tag_ner(ner_tagger)
 
+# print(doc.spans[0].text.lemma)
+
 for span in doc.spans:
     span.normalize(morph_vocab)
 
-for token in doc.tokens:
-    token.lemmatize(morph_vocab)
 
 for span in doc.spans:
     if span.type == LOC:
-        print(span.extract_fact(names_extractor))
-
-
-
+        span.extract_fact(names_extractor)
+        print(span.normal) 
 
