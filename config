@@ -1,0 +1,10 @@
+[Database]
+Path =sqlite:///./news.db
+
+[RSS]
+link1 = http://tass.ru/rss/v2.xml
+
+[Export_params]
+delay_between_messages = 5
+pub_pause = 60
+log_file = logging.log
