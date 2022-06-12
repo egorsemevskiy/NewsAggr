@@ -131,3 +131,6 @@ dmypy.json
 
 #vim 
 .par*
+.words*
+
+data/
