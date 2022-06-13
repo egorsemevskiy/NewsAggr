@@ -2,6 +2,8 @@ import feedparser
 import configparser
 import logging
 
+from lemma import Lemma 
+
 import sqlite3
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -67,11 +69,6 @@ class Source(object):
             data = feedparser.parse(i)
             self.news += [News(i.title, i.link, i.published) \
                     for i in data['entries']]
-
-
-
-
-
 
 class Bot:
     """
