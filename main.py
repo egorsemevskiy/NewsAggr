@@ -32,15 +32,11 @@ class Bot:
         lemma = Lemma()
         for n in news:
             if not self.db.find_link(n.link):
-                #print(trans.translate_titles(n.title))
                 logging.info( u'Detect news: %s' % n)
-                print(n.summary)
-             #   self.db.add_news(n)
+                self.db.add_news(n)
             
 
 def main():
-    #sourse(["http://tass.ru/rss/v2.xml"])
-    #create_connection('news.db')
     b = Bot()
     b.detect()
 main()
