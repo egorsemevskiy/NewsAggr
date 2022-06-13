@@ -1,0 +1,25 @@
+import asyncio
+import async_google_trans_new
+
+
+class Interpreter:
+
+    def __init__(self):
+        self.titles = None
+        self.list_ = None
+
+    async def async_translate_titles(self, text='house'):
+        g = async_google_trans_new.AsyncTranslator()
+        list_ = []
+        translate = await g.translate(text, "ru")
+        return translate
+
+
+if __name__ == '__main__':
+    STRING = "London is the capital of UK"
+    some_interp = Interpreter()
+    loop = asyncio.get_event_loop()
+    translate = loop.run_until_complete(some_interp.async_translate_titles(STRING))
+    print(translate)
+    translate = loop.run_until_complete(some_interp.async_translate_titles("Jet"))
+    print(translate)
