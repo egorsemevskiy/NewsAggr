@@ -8,18 +8,26 @@ class Interpreter:
         self.titles = None
         self.list_ = None
 
-    async def async_translate_titles(self, text='house'):
+    async def async_translate_string(self, text='house'):
         g = async_google_trans_new.AsyncTranslator()
-        list_ = []
         translate = await g.translate(text, "ru")
         return translate
+
+    async def async_translate_list(self, texts_: list):
+        list_ = []
+        for text in texts_:
+            list_.append(self.async_translate_string(text))
+        list_ = await asyncio.gather(*list_)
+        print(list_)
 
 
 if __name__ == '__main__':
     STRING = "London is the capital of UK"
+    with open("original.txt", "r", encoding="utf-8") as file:
+        texts = file.read()
+    texts = [text for text in texts.splitlines()]
     some_interp = Interpreter()
     loop = asyncio.get_event_loop()
-    translate = loop.run_until_complete(some_interp.async_translate_titles(STRING))
-    print(translate)
-    translate = loop.run_until_complete(some_interp.async_translate_titles("Jet"))
-    print(translate)
+    #translate = loop.run_until_complete(some_interp.async_translate_string(STRING))
+    #print(translate)
+    translate = loop.run_until_complete(some_interp.async_translate_list(texts))
