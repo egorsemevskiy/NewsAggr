@@ -8,15 +8,15 @@ class Interpreter:
         self.titles = None
         self.list_ = None
 
-    async def async_translate_string(self, text='house'):
+    async def translate_from_string(self, text='house'):
         g = async_google_trans_new.AsyncTranslator()
         translate = await g.translate(text, "ru")
         return translate
 
-    async def async_translate_list(self, texts_: list):
+    async def translate_from_list(self, texts_: list):
         list_ = []
         for text in texts_:
-            list_.append(self.async_translate_string(text))
+            list_.append(self.translate_from_string(text))
         list_ = await asyncio.gather(*list_)
         print(list_)
 
@@ -30,4 +30,4 @@ if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     #translate = loop.run_until_complete(some_interp.async_translate_string(STRING))
     #print(translate)
-    translate = loop.run_until_complete(some_interp.async_translate_list(texts))
+    translate = loop.run_until_complete(some_interp.translate_from_list(texts))
