@@ -11,10 +11,11 @@ class Interpreter:
 
     Examples
     ----------
-    translate_from_string("London is the capital of Great Britain")
+    some_translation = Interpreter()
+    some_translate.translate_from_string("London is the capital of Great Britain")
     "Лондон - столица Великобритании"
 
-    translate_from_list("Beatles", "Scorpions", "Blur", "Sandy goes on vacation")
+    some_translation.translate_from_list("Beatles", "Scorpions", "Blur", "Sandy goes on vacation")
     ['Битлз ', 'Скорпионы ', 'Размытие ', 'Сэнди уходит в отпуск ']
     """
 
@@ -32,7 +33,7 @@ class Interpreter:
         for text in texts_:
             list_.append(self.translate_from_string(text))
         list_ = await asyncio.gather(*list_)
-        return list_[0]
+        return list_
 
 
 if __name__ == '__main__':
@@ -46,4 +47,5 @@ if __name__ == '__main__':
     translate = loop.run_until_complete(some_interp.translate_from_string(STRING))
     print(translate)
     translate = loop.run_until_complete(some_interp.translate_from_list(texts))
+    print(translate)
 
