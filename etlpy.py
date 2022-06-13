@@ -56,11 +56,15 @@ class ETL:
         a = self.cursor.fetchall()
         print(*a, sep="\n")
 
+    def close(self):
+        self.db.close()
+
     def run(self):
-        etl.select_all()
-        etl.pack_dict()
-        etl.update()
-        etl.print_all()
+        self.select_all()
+        self.pack_dict()
+        self.update()
+        self.print_all()
+        self.close()
 
 
 etl = ETL()
