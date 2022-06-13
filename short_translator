@@ -22,18 +22,17 @@ class Interpreter:
         self.titles = None
         self.list_ = None
 
-    async def translate_from_string(self, text: str='house') -> str:
-
+    async def translate_from_string(self, text: str = 'house') -> str:
         g = async_google_trans_new.AsyncTranslator()
-        translate = await g.translate(text, "ru")
-        return translate
+        translate_ = await g.translate(text, "ru")
+        return translate_
 
     async def translate_from_list(self, texts_: list) -> list:
         list_ = []
         for text in texts_:
             list_.append(self.translate_from_string(text))
         list_ = await asyncio.gather(*list_)
-        print(list_)
+        return list_[0]
 
 
 if __name__ == '__main__':
@@ -47,3 +46,4 @@ if __name__ == '__main__':
     translate = loop.run_until_complete(some_interp.translate_from_string(STRING))
     print(translate)
     translate = loop.run_until_complete(some_interp.translate_from_list(texts))
+
