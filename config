@@ -3,9 +3,15 @@ Path =sqlite:///./news.db
 
 [RSS]
 
+link1 = http://tass.ru/rss/v2.xml
 link2 = https://rss.nytimes.com/services/xml/rss/nyt/World.xml
+link3 = http://static.feed.rbc.ru/rbc/logical/footer/news.rss
+; link4 = http://rss.cnn.com/rss/edition_world.rss
 
 [Export_params]
 delay_between_messages = 5
 pub_pause = 60
 log_file = logging.log
+
+[feedparser]
+user_agent = Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0

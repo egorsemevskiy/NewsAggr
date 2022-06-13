@@ -20,8 +20,7 @@ class Bot:
         config.read('./config')
         log_file = config['Export_params']['log_file']
         """
-        Эти две переменные пока не используются, нужны чтобы не 
-        забанили
+        Эти две переменные для постинга. Пока не используются
         """
         self.pub_pause = int(config['Export_params']['pub_pause'])
         self.delay_between_messages = int\
@@ -47,7 +46,6 @@ class Bot:
         self.src = Source(config['RSS'])
     
     def detect(self):
-        self.src.refresh()
         news = self.src.news
         news.reverse()
         lemma = Lemma()
