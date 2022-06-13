@@ -3,6 +3,7 @@ import configparser
 import logging
 
 from lemma import Lemma 
+from trans import Trans
 
 import sqlite3
 from sqlalchemy import create_engine
@@ -94,15 +95,14 @@ class Bot:
         self.src.refresh()
         news = self.src.news
         news.reverse()
-        
+        trans  = Trans()        
         lemma = Lemma()
-        tmp = []
         for n in news:
             if not self.db.find_link(n.link):
+                print(trans.translate_titles(n.title))
                 logging.info( u'Detect news: %s' % n)
-                print(n.keys())
-                print(lemma.country_lemma(n.title))
-                #self.db.add_news(n)
+             #   self.db.add_news(n)
+            
 
 def main():
     #sourse(["http://tass.ru/rss/v2.xml"])

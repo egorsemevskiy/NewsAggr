@@ -5,7 +5,6 @@ from natasha import (
             NewsMorphTagger,
             NewsSyntaxParser,
             NewsNERTagger,
-            PER,
             LOC,
             NamesExtractor,
             Doc
