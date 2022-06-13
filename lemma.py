@@ -39,9 +39,3 @@ class Lemma():
                 print(span.normal) 
 
 
-def main():
-    text = 'Посол Израиля на Украине Йоэль Лион признался, что пришел в шокa'
-    lemma = Lemma()
-    lemma.country_lemma(text)
-
-main()

@@ -66,7 +66,10 @@ class Source(object):
     def refresh(self):
         self.news = []
         for i in self.links:
-            data = feedparser.parse(i)
+            try:
+                data = feedparser.parse(i)
+            except(e):
+                print("Parsing Error" + e)
             self.news += [News(i.title, i.link, i.published) \
                     for i in data['entries']]
 
@@ -91,11 +94,15 @@ class Bot:
         self.src.refresh()
         news = self.src.news
         news.reverse()
-
+        
+        lemma = Lemma()
+        tmp = []
         for n in news:
             if not self.db.find_link(n.link):
                 logging.info( u'Detect news: %s' % n)
-                self.db.add_news(n)
+                print(n.keys())
+                print(lemma.country_lemma(n.title))
+                #self.db.add_news(n)
 
 def main():
     #sourse(["http://tass.ru/rss/v2.xml"])
