@@ -2,7 +2,7 @@ import configparser
 import logging
 
 from lemma import Lemma 
-from trans import Trans
+#from trans import Trans
 
 from news import News, Database, Source 
 
@@ -28,12 +28,13 @@ class Bot:
         self.src.refresh()
         news = self.src.news
         news.reverse()
-        trans  = Trans()        
+        #trans  = Trans()        
         lemma = Lemma()
         for n in news:
             if not self.db.find_link(n.link):
-                print(trans.translate_titles(n.title))
+                #print(trans.translate_titles(n.title))
                 logging.info( u'Detect news: %s' % n)
+                print(n.summary)
              #   self.db.add_news(n)
             
 
