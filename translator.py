@@ -36,16 +36,16 @@ class Interpreter:
         return list_
 
 
-if __name__ == '__main__':
-    STRING = "There is a sparrow on my kitchen"
-    with open("original.txt", "r", encoding="utf-8") as file:
-        texts = file.read()
-    texts = [text for text in texts.splitlines()]
-    some_interp = Interpreter()
-    loop = asyncio.get_event_loop()
-    # translate = loop.run_until_complete(some_interp.translate_from_string)
-    translate = loop.run_until_complete(some_interp.translate_from_string(STRING))
-    print(translate)
-    translate = loop.run_until_complete(some_interp.translate_from_list(texts))
-    print(translate)
+# if __name__ == '__main__':
+#     STRING = "There is a sparrow on my kitchen"
+#     with open("original.txt", "r", encoding="utf-8") as file:
+#         texts = file.read()
+#     texts = [text for text in texts.splitlines()]
+#     some_interp = Interpreter()
+#     loop = asyncio.get_event_loop()
+#     # translate = loop.run_until_complete(some_interp.translate_from_string)
+#     translate = loop.run_until_complete(some_interp.translate_from_string(STRING))
+#     print(translate)
+#     translate = loop.run_until_complete(some_interp.translate_from_list(texts))
+#     print(translate)
 
