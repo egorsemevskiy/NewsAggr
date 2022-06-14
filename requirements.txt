@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: linux-64
@@ -135,3 +136,6 @@ yarl=1.7.2=pypi_0
 zeromq=4.3.4=h9c3ff4c_1
 zipp=3.8.0=pyhd8ed1ab_0
 zlib=1.2.12=h7f8727e_2
+=======
+async-google-trans-new==1.4.5
+>>>>>>> 8819feadcd67d53cd3c863dc6149d252904f99f4
