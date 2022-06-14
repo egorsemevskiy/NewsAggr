@@ -1,5 +1,0 @@
-; link1 =  https://pypi.org/project/fake-useragent/
-
-curl 'http://tass.ru/rss/v2.xml' -o /dev/null -D- -s
-
-$ curl 'http://static.feed.rbc.ru/rbc/logical/footer/news.rss' -H 'User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0' -o /dev/null -D- -s
