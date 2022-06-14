@@ -13,7 +13,7 @@ class ETL:
 
     Use run() method to run ETL script automatically
     """
-    def __init__(self, name="n_db.db", table_name: str = "news"):
+    def __init__(self, name="news.db", table_name: str = "news"):
         self.name = name
         self.table_name = table_name
         self.db = sqlite3.connect(self.name)
@@ -21,7 +21,7 @@ class ETL:
         self.sqlite_select_query = """SELECT * from news"""
         self.dictionary = None
 
-    def set_db_name(self, db_name: str = "n_db.db", table_name: str = "news"):
+    def set_db_name(self, db_name: str = "news.db", table_name: str = "news"):
         self.name = db_name
         self.table_name = table_name
 
