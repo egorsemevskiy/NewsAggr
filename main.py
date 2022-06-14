@@ -59,4 +59,5 @@ def main():
     b = Bot() 
     b.detect()
     
-main()
+if __name__ == '__main__':
+    main()
