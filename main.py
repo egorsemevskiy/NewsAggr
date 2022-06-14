@@ -30,7 +30,7 @@ class Bot:
         Путь к лог файлу лежит в конфигах
         """
         logging.basicConfig\
-                (filename=config['Export_params']['log_file'],\
+                (filename=log_file,\
                encoding='utf-8', level=logging.INFO)
 
         """
