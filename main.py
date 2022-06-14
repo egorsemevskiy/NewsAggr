@@ -56,6 +56,7 @@ class Bot:
             
 
 def main():
-    b = Bot()
+    b = Bot() 
     b.detect()
+    
 main()
