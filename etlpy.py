@@ -1,5 +1,5 @@
 import sqlite3
-from short_translator import Interpreter
+from translator import Interpreter
 import time
 
 
